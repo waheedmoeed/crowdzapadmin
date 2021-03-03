@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './style.css';
-import { RouteComponentProps } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import ListProperty from './Components/ListProperty';

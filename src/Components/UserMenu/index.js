@@ -3,6 +3,8 @@ import './style.css';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-fa';
 import LocalStore from "../../Config/localStore";
+import {connect} from "react-redux";
+import {processKyc} from "../../Services/Setting";
 
 class UserMenu extends React.Component {
   constructor(props) {
@@ -55,7 +57,7 @@ class UserMenu extends React.Component {
         <a href="#" className="headerUser dropdown-toggle" data-toggle="dropdown">
           <img className="avatar headerAvatar pull-left" src="http://mariusn.com/themes/reales/images/avatar-1.png" />
           <div className="userTop pull-left">
-            <span className="headerUserName">John Smith</span>
+            <span className="headerUserName">{this.props.user.name}</span>
             <Icon name="angle-down" />
           </div>
           <div className="clearfix" />
@@ -67,12 +69,12 @@ class UserMenu extends React.Component {
               src="http://mariusn.com/themes/reales/images/avatar-1.png"
               alt="avatar"
             />
-            <div className="mobAvatarName">John Smith</div>
+            <div className="mobAvatarName">{this.props.user.name}</div>
           </div>
           <ul>
             <li><Link to="/wallet"><span className="walletIcon fa" />Wallet</Link></li>
-            <li><a href="#"><Icon name="cog" />Settings</a></li>
-            <li><Link to="/myprofile"><Icon name="user" />Profile</Link></li>
+            <li><Link to="/profiling/kyc"><Icon name="cog" />Kyc</Link></li>
+            <li><Link to="/profiling"><Icon name="user" />Profile</Link></li>
             <li><a href="#">
               <Icon name="bell-o" />
               Notifications
@@ -87,4 +89,10 @@ class UserMenu extends React.Component {
   }
 }
 
-export default UserMenu;
+const mapStateToProps = state => ({
+  user: state.auth.user
+});
+export default connect(
+    mapStateToProps,
+    { processKyc}
+)(UserMenu)

@@ -7,6 +7,7 @@ import HomePage from 'Scenes/HomePage';
 import SearchPage from 'Scenes/SearchPage';
 import WalletPage from 'Scenes/WalletPage';
 import AuthorityContract from "Scenes/AuthorithyContractPage";
+import Profiling from 'Scenes/Profiling'
 import jwt_decode from "jwt-decode"
 import MyHousePage from 'Scenes/MyhousePage';
 import store from '../../Redux'
@@ -44,6 +45,7 @@ function App(){
                 <Route exact={true} path="/wallet/:action?" component={WalletPage} />
                 <Route exact={true} path="/property/:id?" component={MyHousePage} />
                 <Route exact={true} path="/authorityContract" component={AuthorityContract} />
+                <Route exact={true} path="/profiling/:action?" component={Profiling} />
                 </Switch>
             </div>
         </Router>

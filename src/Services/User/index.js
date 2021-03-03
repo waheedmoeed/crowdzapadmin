@@ -56,7 +56,7 @@ export const loggedUser = data => dispatch => {
 
 //set received data to storage and also set in store
 function setUser(data, dispatch) {
-  const { token, user } = data;
+  const { token, user} = data;
   localStore.setToken(token);
   localStore.setClientId(user._id)
   // Decode token to get user data

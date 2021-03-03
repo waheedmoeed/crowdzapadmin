@@ -5,7 +5,7 @@ import { HTTP } from "Config/HTTPService";
 const CLOUD_URL = CONSTANTS.CLOUD.CLOUD_URL
 export default class SettingService {
     
-     uploadImage(image) {
+    uploadImage(image) {
         return Axios.post(CLOUD_URL, image, {
             headers: {
                 'Content-Type': "application/json"
@@ -14,7 +14,7 @@ export default class SettingService {
     }
 
 
-     postKYC(data){
+    postKYC(data){
         return HTTP.post(CONSTANTS.API_URL.POST_KYC, data,{
             headers: {
                 contentType: "application/json"

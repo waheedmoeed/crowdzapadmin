@@ -17,9 +17,6 @@ class Header extends React.Component {
           <MenuBar />
         </div>
         <Caption />
-        <div className="selectBarWrapper">
-          <SearchBar />
-        </div>
       </div>
     );
   }

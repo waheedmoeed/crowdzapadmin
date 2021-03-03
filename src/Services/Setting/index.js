@@ -1,8 +1,8 @@
-import SettingService from "./Setting";
+import SettingService from "./SettingService";
 import {changeKYCStatus} from "Redux/Setting"
 
 const setting = new SettingService()
-//@ts-ignore
+
 const uploadImage = (file) => {
   const formData = new FormData();
   formData.append('file', file);
@@ -11,7 +11,7 @@ const uploadImage = (file) => {
   };
 
 //@ts-ignore
-////Upload Images to CLoudinary and send data to api "3 Promises Handle"
+////Upload Images to cloudinary and send data to api "3 Promises Handle"
 export const processKyc = (data) =>  dispatch => {
   let kyc ={
     docType : data.docType,

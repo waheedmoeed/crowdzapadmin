@@ -1,14 +1,17 @@
 import * as React from 'react';
 import './style.css';
+import HouseDetailModel from "../SelectComponent/Detail";
+import {useState} from "react";
 
 
-class SingleHouse extends React.Component{
-  render() {
+function SingleHouse (props){
+  const [modalStatus, setModalStatus] = useState(false)
+
     return (
       <div className="singleHouse">
-        <a href="#" className="card">
+        <a className="card" onClick={()=>setModalStatus(true)}>
           <div className="figure">
-            <img src={this.props.data.mainImg} alt="image" />
+            <img src={props.data.mainImg} alt="image" />
             <div className="figCaption">
               <div>$1,550,000</div>
               <span className="icon-eye"> 200</span>
@@ -18,19 +21,19 @@ class SingleHouse extends React.Component{
             <div className="figView"><span className="icon-eye" /></div>
             <div className="figType">FOR SALE</div>
           </div>
-          <h2>{this.props.data.title}</h2>
+          <h2>{props.data.title}</h2>
           <div className="cardAddress"><span className="icon-pointer" />
-            {this.props.data.location.city}, {this.props.data.location.country},
+            {props.data.location.city}, {props.data.location.country},
             </div>
           <ul className="cardFeat">
-            <li><span className="fa fa-moon-o" /> {this.props.data.contractType}</li>
-            <li><span className="icon-drop" /> {this.props.data.nodeName}</li>
-            <li><span className="icon-frame" /> {new Date(this.props.data.endDate).toDateString()} Sq Ft</li>
+            <li><span className="fa fa-moon-o" /> {props.data.contractType}</li>
+            <li><span className="icon-drop" /> {props.data.nodeName}</li>
+            <li><span className="icon-frame" /> {new Date(props.data.endDate).toDateString()} Sq Ft</li>
           </ul>
         </a>
+        <HouseDetailModel status={modalStatus} changeStatus={setModalStatus} data={props.data}/>
       </div>
-    );
-  }
+    )
 }
 
 export default SingleHouse;

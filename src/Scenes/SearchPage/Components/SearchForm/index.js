@@ -74,32 +74,6 @@ class SearchForm extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row form-group">
-            <div className="col-xs-6 col-sm-6 col-md-3 col-lg-3 formItem">
-              <div className="formField">
-                <label>Bedrooms</label>
-                <div className="volume">
-                  <a href="#" className="btn btn-gray btn-round-left">
-                    <Icon name="angle-left" />
-                  </a>
-                  <input type="text" className="form-control" readOnly={true} value="1" />
-                  <a href="#" className="btn btn-gray btn-round-right">
-                    <Icon name="angle-right" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-6 col-sm-6 col-md-3 col-lg-3 formItem">
-              <div className="formField">
-                <label>Bathrooms</label>
-                <div className="volume">
-                  <a href="#" className="btn btn-gray btn-round-left"><Icon name="angle-left" /></a>
-                  <input type="text" className="form-control" readOnly={true} value="1" />
-                  <a href="#" className="btn btn-gray btn-round-right"><Icon name="angle-right" /></a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div className="resultTable">
           <div className="resultTab">

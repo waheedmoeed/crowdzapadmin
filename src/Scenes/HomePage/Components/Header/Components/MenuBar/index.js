@@ -58,13 +58,10 @@ class MenuBar extends React.Component {
   render() {
     return (
       <div className="menuBar">
-        <div className="langSelectorWrapper">
-          <LanguageSelector />
-        </div>
         <a href="/">
           <div className="homeLogo osLight">
             <Icon name="home" size="2x" /> 
-            <span>House</span>
+            <span>CrowdZap</span>
           </div>
         </a>
         <a 
@@ -77,27 +74,21 @@ class MenuBar extends React.Component {
         <div className={'homeNav' + (this.state.isHandlerActive ? ' active' : '')} >
           <ul>
             <li className="moreOption">
-              <Link to="/search?type=sale">{getTranslation(this.props.lang, 'Buy')}</Link>
+              <Link to="/search?type=sale">{getTranslation(this.props.lang, 'MarketPlace')}</Link>
             </li>
             <li className="moreOption">
-              <Link to="/search?type=rent">{getTranslation(this.props.lang, 'Rent')}</Link>
-            </li>
-            <li className="moreOption">
-              <Link to="/agent/search">{getTranslation(this.props.lang, 'Renovation')}</Link>
+              <Link to="wallet">{getTranslation(this.props.lang, 'Wallet')}</Link>
             </li>
             <li className="moreOption">
               <Link to="/agent/search">{getTranslation(this.props.lang, 'Commercial')}</Link>
             </li>
             <li className="moreOption">
-              <Link to="/projects">{getTranslation(this.props.lang, 'Project')}</Link>
-            </li>
-            <li className="moreOption">
-              <Link to="/agent/search">{getTranslation(this.props.lang, 'Find agent')}</Link>
+              <Link to="/projects">{getTranslation(this.props.lang, 'About')}</Link>
             </li>
             {this.loginField()}
             <li>
-              <Link to="/newproperty/sell"><div className="btn btn-green">
-                {getTranslation(this.props.lang, 'List a Property')}
+              <Link to="/search?type=sale"><div className="btn btn-green">
+                {getTranslation(this.props.lang, 'View All Projects')}
               </div></Link>
             </li>
           </ul>

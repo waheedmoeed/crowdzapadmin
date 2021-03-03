@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
     wallet : wallet,
     cryptoOrders: cryptoOrders,
     cryptoTransfer: cryptoTransfer,
-    authorityContract: authorityContract
+    authorityContract: authorityContract,
 });
 const initialState = {}
 
