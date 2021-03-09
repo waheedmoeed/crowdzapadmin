@@ -23,25 +23,10 @@ class LeftSide extends React.Component {
               <Icon className="navIcon" name="compass" />
               <span className="navLabel">Search</span>
             </Link></li>
-            <li className="hasSub hasSubActive">
-              <Link to="/newproperty/sell" onClick={this.toggleActive}>
-                <Icon className="navIcon" name="plus-circle" />
-                <span className="navLabel">Add Property</span>
-                <Icon className="closeIcon arrowRight" name="angle-left" />
-                <Icon className="openIcon arrowRight" name="angle-down" />
-              </Link>
-              <ul className="colors secondUl">
-                <li><Link to="/newproperty/sell">
-                  Sell<Icon name="circle-o" className="icon-right" />
-                </Link></li>
-                <li><Link to="/newproperty/rent">
-                  Rent<Icon name="circle-o" className="icon-right" />
-                </Link></li>
-                <li><Link to="/newproperty/renovation">
-                  Renovation<Icon name="circle-o" className="icon-right" />
-                </Link></li>
-              </ul>
-            </li>
+            <li><Link to="/new_property">
+              <Icon className="navIcon" name="plus-circle" />
+              <span className="navLabel">Add Property</span>
+            </Link></li>
             <li className="hasSub hasSubActive">
               <Link to="/property/mylisting" onClick={this.toggleActive}>
                 <Icon className="navIcon icon-home" name="home" />

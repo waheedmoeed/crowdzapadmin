@@ -9,10 +9,11 @@ import 'font-awesome/css/font-awesome.min.css';
 function CryptoOrders(){
     const cryptoOrders = useSelector((state)=> state.cryptoOrders.cryptoOrders)
     const loading  = useSelector((state)=> state.cryptoOrders.loadingOrders)
+    const tried  = useSelector((state)=> state.cryptoOrders.tried)
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        if(cryptoOrders.length === 0){
+        if(!tried){
             dispatch(getCryptoOrders())
         }
     })
@@ -35,24 +36,33 @@ function CryptoOrders(){
                         type="ThreeDots" color="#00A9A4" height={40} width={50} visible={loading}
                     />
                     :
-                    cryptoOrders.map((value, index) =>(
-                        <tr>
-                            <td>{value.nodeName}</td>
-                            <td>{value.amount}</td>
-                            <td>{new Date(value.orderTime).toDateString()}</td>
-                            <td>{value.transactionId || "---"}</td>
-                            <td>{(value.processed === 0) ?
-                                <FontAwesomeIcon icon={faCheckSquare} size="lg"  color="green" />
-                                :
-                                (value.processed === 1) ?
-                                    <FontAwesomeIcon icon={faSpinner} size="lg" color="green" spin  />
+                    (cryptoOrders.length > 0)?
+                        cryptoOrders.map((value, index) =>(
+                            <tr>
+                                <td>{value.nodeName}</td>
+                                <td>{value.amount}</td>
+                                <td>{new Date(value.orderTime).toDateString()}</td>
+                                <td>{value.transactionId || "---"}</td>
+                                <td>{(value.processed === 0) ?
+                                    <FontAwesomeIcon icon={faCheckSquare} size="lg"  color="green" />
                                     :
-                                    <FontAwesomeIcon icon={faMinusSquare} size="lg" color="red"/>
-                            }
-                            </td>
-                        </tr>
+                                    (value.processed === 1) ?
+                                        <FontAwesomeIcon icon={faSpinner} size="lg" color="green" spin  />
+                                        :
+                                        <FontAwesomeIcon icon={faMinusSquare} size="lg" color="red"/>
+                                }
+                                </td>
+                            </tr>
+                            )
                         )
-                    )
+                        :
+                        <tr>
+                            <td>No Orders Yet</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
             }
             </tbody>
         </table>

@@ -1,17 +1,36 @@
 import {Wallet} from "Services/Wallet";
+import {Secp256k1HdWallet} from "@cosmjs/launchpad";
 
-export const createBasicContract = () => (dispatch) => {
+export const createBasicContract = async (data, callback) => {
+    try{
+        let chainResponse = await createBasicContractInChain(data)
+        console.log(chainResponse)
+        if(chainResponse){
+
+        }
+    }catch (e) {
+        callback("ERROR")
+        console.log(e)
+    }
+}
+
+const createBasicContractInChain = async (data) => {
+    let contractWallet = await Secp256k1HdWallet.generate()
+    const [{ address }] = await contractWallet.getAccounts();
+
     let client  = Wallet.getInstance().account
     let msgTran =[
         {
             "type": "smartcontracts/create_basic_contract",
             "value": {
-                "creator": client.address,
-                "title": "House In Makkah",
-                "total_supply" : "1000",
-                "token_price": "1000",
-                "start_date": "2021-01-26T16:04:27.4609868Z",
-                "end_date": "2021-01-26T16:04:27.4609868Z"
+                "contract_address": address.toString(),
+                "creator": client.address.toString(),
+                "title": data.title.toString(),
+                "total_supply" : data.totalSupply.toString(),
+                "token_price": data.tokenPrice.toString(),
+                "start_date": data.start_date,
+                "end_date": data.end_date
+                //"2021-01-26T16:04:27.4609868Z"
             }
         }]
     let fee=  {
@@ -20,11 +39,5 @@ export const createBasicContract = () => (dispatch) => {
     }
 
     //dispatch((processingCreatePoll()))
-    client.signerCosmosClient.signAndBroadcast(msgTran,fee).then((res)=>{
-        console.log(res)
-        //dispatch(createPollSucceed())
-    }).catch((err)=>{
-        //dispatch(createPollError(err))
-        console.log(err)
-    })
+    return client.signerCosmosClient.signAndBroadcast(msgTran,fee)
 }

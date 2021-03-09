@@ -57,7 +57,7 @@ class UserMenu extends React.Component {
         <a href="#" className="headerUser dropdown-toggle" data-toggle="dropdown">
           <img className="avatar headerAvatar pull-left" src="http://mariusn.com/themes/reales/images/avatar-1.png" />
           <div className="userTop pull-left">
-            <span className="headerUserName">{this.props.user.name}</span>
+            <span className="headerUserName">{(this.props.user)?this.props.user.name:"Welcome"}</span>
             <Icon name="angle-down" />
           </div>
           <div className="clearfix" />
@@ -69,7 +69,7 @@ class UserMenu extends React.Component {
               src="http://mariusn.com/themes/reales/images/avatar-1.png"
               alt="avatar"
             />
-            <div className="mobAvatarName">{this.props.user.name}</div>
+            <div className="mobAvatarName">{(this.props.user)?this.props.user.name:"Welcome"}</div>
           </div>
           <ul>
             <li><Link to="/wallet"><span className="walletIcon fa" />Wallet</Link></li>
