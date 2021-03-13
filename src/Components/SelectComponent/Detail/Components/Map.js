@@ -6,7 +6,7 @@ class MapComp extends Component{
         return(
             <div
                 role="tabpanel"
-                hidden={this.props.value !== 3}
+                hidden={this.props.value !== 1}
                 id={'simple-tabpanel-0'}
                 aria-labelledby={`simple-tab-0`}
                 className="listedPropDetail"

@@ -25,9 +25,9 @@ function RequestForm(){
     'ETHER',
   ];
   const nodes = [
-    'Abdul Node',
-    'Haroon Node',
-    'Nadeem Node'
+    'Abdul Waheed',
+    'Haroon Munir',
+    'Abdullah Nadeem'
   ];
 
   const placeCryptoOrder = (e)=>{
@@ -37,11 +37,12 @@ function RequestForm(){
         clientAddress: walletObj.account.walletObj.address,
         amount: amount,
         nodeName: nodes[node] || "Abdul Node",
-        cryptoTranHash:transactionId,
+        fiatCurrencyTranId:transactionId,
         cryptoType: method[cryptoType] || "BTC"
       }
       dispatch(buyCryptoOrder(order))
-    }else{
+    }
+    else{
       dispatch(addCryptoOrderError("Invalid data"))
     }
   }

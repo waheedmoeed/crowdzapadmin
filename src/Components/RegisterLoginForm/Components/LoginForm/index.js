@@ -21,6 +21,12 @@ class LoginForm extends React.Component {
     this.informParent = this.informParent.bind(this)
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.props.isAuthenticated){
+      this.props.history.push("/search")
+    }
+  }
+
   signIn = (e) => {
     e.preventDefault();
 
@@ -28,7 +34,6 @@ class LoginForm extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-
     this.props.loginUser(userData);
   }
 

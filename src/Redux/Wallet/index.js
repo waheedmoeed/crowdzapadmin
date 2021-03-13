@@ -20,6 +20,10 @@ const initialState = {
     loadAccountData : false,
     accountDataError : null
 };
+
+const ACTIONS = {
+    CLEAR_WALLET_ERROR : "[wallet] CLEAR_WALLET_ERROR"
+}
 /***************/
 /***Actions****/
 /*************/
@@ -105,7 +109,7 @@ export const accountsDataError = (payload)=>{
 
 export const clearError = () => {
     return {
-        type: CONSTANTS.COMMON.CLEAR_ERROR,
+        type: ACTIONS.CLEAR_WALLET_ERROR,
         payload: null
     };
 };
@@ -188,7 +192,7 @@ export default function(state = initialState, action) {
           accountDataError: action.payload
       };
 
-    case CONSTANTS.COMMON.CLEAR_ERROR :
+    case ACTIONS.CLEAR_WALLET_ERROR :
       return {
           ...state,
           error: null,

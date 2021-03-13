@@ -23,7 +23,6 @@ class SelectedItemDetailDialog extends Component {
         this.a11yProps = this.a11yProps.bind(this)
     }
     handleChange(event, newValue){
-        console.log(newValue)
         this.setState({
             value:newValue
         })

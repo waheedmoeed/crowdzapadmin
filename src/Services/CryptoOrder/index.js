@@ -37,3 +37,18 @@ export const buyCryptoOrder = (order) => dispatch => {
         dispatch(addCryptoOrderError(err))
     );
 };
+
+// Register UserService - return ok response on success
+export const updateCryptoOrderStatus = (txHash, orderId, callBack) => {
+    let data = {
+        orderId: orderId,
+        transactionId: txHash
+    }
+    cryptoOrderService.processCryptoOrder(data).then((res)=>{
+        if(res.status === 200){
+            callBack("PROCESSING_SUCCEED", txHash)
+        }else{
+            callBack("PROCESSING_FAILED", txHash)
+        }
+    })
+};

@@ -1,5 +1,6 @@
 import {Wallet} from "Services/Wallet";
 import {Secp256k1HdWallet} from "@cosmjs/launchpad";
+import {newInvestment} from "../../Services/InvestmentPortfolio";
 
 export const createBasicContract = async (data, callback) => {
     try{
@@ -12,6 +13,19 @@ export const createBasicContract = async (data, callback) => {
         callback("ERROR")
         console.log(e)
     }
+}
+
+export const buyBasicTokens =  (data, callBack) => {
+    buyBasicTokensInChain(data).then((res)=>{
+        if(res.transactionHash){
+            newInvestment(res.transactionHash, data, callBack)
+        }else{
+            callBack("PROCESSING_FAILED", "")
+        }
+    }).catch((err)=>{
+        callBack("PROCESSING_FAILED","")
+        console.log(err)
+    })
 }
 
 const createBasicContractInChain = async (data) => {
@@ -37,7 +51,25 @@ const createBasicContractInChain = async (data) => {
         "amount": [],
         "gas": "200000"
     }
+    return client.signerCosmosClient.signAndBroadcast(msgTran,fee)
+}
 
-    //dispatch((processingCreatePoll()))
+
+export const buyBasicTokensInChain =  (data) => {
+    let client  = Wallet.getInstance().account
+    let msgTran =[
+        {
+            "type": "smartcontracts/buy_basic_tokens",
+            "value": {
+                "contract_address": "cosmos144guy8hgaslrwt4hmgz66nw5ger0wgzu0avld9",
+                "tokens": data.amount.toString(),
+                "investor": client.address.toString()
+            }
+        }]
+    let fee=  {
+        "amount": [],
+        "gas": "200000"
+    }
+
     return client.signerCosmosClient.signAndBroadcast(msgTran,fee)
 }

@@ -15,6 +15,7 @@ import store from '../../Redux'
 import LocalStore from "Config/localStore";
 import {setCurrentUser} from "Redux/User";
 import {logoutUser} from "Services/User";
+import PrivateRoute from "./PrivateRoute";
 
 
 const localStore = new LocalStore();
@@ -42,12 +43,12 @@ function App(){
             <div className="globalContainer">
                 <Switch>
                 <Route exact={true} path="/" component={HomePage} />
-                <Route exact={true} path="/search/:action?" component={SearchPage} />
-                <Route exact={true} path="/wallet/:action?" component={WalletPage} />
-                <Route exact={true} path="/property/:id?" component={MyHousePage} />
-                <Route exact={true} path="/new_property" component={CreateTokenizedAsset} />
-                <Route exact={true} path="/authorityContract" component={AuthorityContract} />
-                <Route exact={true} path="/profiling/:action?" component={Profiling} />
+                <PrivateRoute exact={true} path="/search/:action?" component={SearchPage} />
+                <PrivateRoute exact={true} path="/wallet/:action?" component={WalletPage} />
+                <PrivateRoute exact={true} path="/property/:id?" component={MyHousePage} />
+                <PrivateRoute exact={true} path="/new_property" component={CreateTokenizedAsset} />
+                <PrivateRoute exact={true} path="/authorityContract" component={AuthorityContract} />
+                <PrivateRoute exact={true} path="/profiling/:action?" component={Profiling} />
                 </Switch>
             </div>
         </Router>
