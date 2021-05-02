@@ -47,10 +47,6 @@ class SelectComponent extends React.Component {
         ref={(div) => { this.wrapperRef = div; }}
         className={'selectComponent' + (this.state.showList ? ' active' : '')}
       >
-        <div className="form-control dropdown-toggle" onClick={this.showToggle}>
-          <span className="dropdown-label">{this.props.listItem[this.state.itemSelected]}</span>
-          <span className="caret" />
-        </div>
         <ul className={`dropdown-menu dropdown-select${this.props.switchTop ? ' switchTop' : ''}`}>
           {this.props.listItem.map((item, index) => {
             return (

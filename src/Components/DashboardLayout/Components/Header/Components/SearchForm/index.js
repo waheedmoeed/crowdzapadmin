@@ -3,15 +3,19 @@ import './style.css';
 
 import { Icon } from 'react-fa';
 
-class SearchForm extends React.Component {
-  render() {
+function SearchForm(props){
+  const [queryValue, setQueryValue] = React.useState("")
+
     return (
       <div className="search">
-        <Icon  name="search" />
-        <input type="text" placeholder="Search for houses, apartments..." />
+        <input type="text" onChange={(e)=>{setQueryValue(e.target.value)}} placeholder="Search by city" />
+        <Icon  name="search" onClick={
+          ()=>{
+            props.search(queryValue)
+          }
+        } />
       </div>
     );
-  }
 }
 
 export default SearchForm;
