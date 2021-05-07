@@ -28,25 +28,24 @@ export const buyBasicTokens =  (data, callBack) => {
     })
 }
 
-const createBasicContractInChain = async (data) => {
-    let contractWallet = await Secp256k1HdWallet.generate()
-    const [{ address }] = await contractWallet.getAccounts();
+export const createBasicContractInChain = async (data) => {
 
     let client  = Wallet.getInstance().account
     let msgTran =[
         {
             "type": "smartcontracts/create_basic_contract",
             "value": {
-                "contract_address": address.toString(),
+                "contract_address": data.contractAddress,
                 "creator": client.address.toString(),
                 "title": data.title.toString(),
                 "total_supply" : data.totalSupply.toString(),
                 "token_price": data.tokenPrice.toString(),
-                "start_date": data.start_date,
-                "end_date": data.end_date
+                "start_date": new Date().toISOString(),
+                "end_date": data.endDate
                 //"2021-01-26T16:04:27.4609868Z"
             }
         }]
+    console.log(msgTran)    
     let fee=  {
         "amount": [],
         "gas": "200000"

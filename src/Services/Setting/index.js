@@ -3,12 +3,12 @@ import {changeKYCStatus} from "Redux/Setting"
 
 const setting = new SettingService()
 
-const uploadImage = (file) => {
+export const uploadImage = (file) => {
   const formData = new FormData();
   formData.append('file', file);
   formData.append('upload_preset', 'h3djfcxt');
     return setting.uploadImage(formData)
-  };
+};
 
 //@ts-ignore
 ////Upload Images to cloudinary and send data to api "3 Promises Handle"

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './style.css';
 
+
 class SelectComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,6 @@ class SelectComponent extends React.Component {
       showList: false,
       itemSelected: 0
     };
-    this.wrapperRef = null
   }
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
@@ -37,7 +37,6 @@ class SelectComponent extends React.Component {
     this.setState({
       itemSelected: index
     });
-    this.props.setValue(index)
     this.showToggle();
   }
 
@@ -47,6 +46,10 @@ class SelectComponent extends React.Component {
         ref={(div) => { this.wrapperRef = div; }}
         className={'selectComponent' + (this.state.showList ? ' active' : '')}
       >
+        <div className="form-control dropdown-toggle" onClick={this.showToggle}>
+          <span className="dropdown-label">{this.props.listItem[this.state.itemSelected]}</span>
+          <span className="caret" />
+        </div>
         <ul className={`dropdown-menu dropdown-select${this.props.switchTop ? ' switchTop' : ''}`}>
           {this.props.listItem.map((item, index) => {
             return (

@@ -29,7 +29,7 @@ export const createNewPoll = (pollType, amount) => (dispatch) => {
     dispatch((processingCreatePoll()))
     console.log(msgTran)
     client.signerCosmosClient.signAndBroadcast(msgTran,fee).then((res)=>{
-        dispatch(createPollSucceed())
+        dispatch(createPollSucceed(res.data.rawlog))
         console.log(res)
     }).catch((err)=>{
         dispatch(createPollError(err))
@@ -43,9 +43,9 @@ export const votePoll = (pollId, vote) => (dispatch) => {
         {
             "type": "relcontractors/vote_poll",
             "value": {
-                "poll_id": "nppqimgegmgkbnptniwdyj",
-                "vote": vote || '0',
-                "voter": client.address
+                "poll_id": pollId.toString(),
+                "vote": vote.toString() || '0',
+                "voter": client.address.toString()
             }
         }]
     let fee=  {
@@ -69,7 +69,7 @@ export const processPoll = (pollId) => (dispatch) => {
         {
             "type": "relcontractors/process_poll",
             "value": {
-                "poll_id": "dddddddddefeacef",
+                "poll_id": pollId.toString(),
                 "transactor": client.address
             }
         }]
@@ -78,12 +78,9 @@ export const processPoll = (pollId) => (dispatch) => {
         "gas": "200000"
     }
 
-    dispatch((processingPollProcess()))
     client.signerCosmosClient.signAndBroadcast(msgTran,fee).then((res)=>{
-        dispatch(pollProcessSucceed())
         console.log(res)
     }).catch((err)=>{
-        dispatch(pollProcessError(err))
         console.log(err)
     })
 }
@@ -93,7 +90,7 @@ export const getPolls = () => (dispatch) =>{
     LCDClient.get(CONSTANTS.CHAIN_API_URLS.GET_POLLS).then((res)=>{
         //Todo : extract data from res and send it to store
         console.log(res)
-        dispatch(setPolls(res))
+        dispatch(setPolls(res.result))
     }).catch((err)=>{
         console.log(err)
         dispatch(pollsError(err))

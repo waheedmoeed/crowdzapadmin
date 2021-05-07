@@ -23,17 +23,12 @@ function CreateNewPoll (){
 
     const createPoll = (e)=>{
         e.preventDefault()
-        dispatch(createNewPoll(pollType,amount))
-    }
-    const basicContract = (e)=>{
-        e.preventDefault()
-        dispatch(createBasicContract())
+        if(!locked){
+            dispatch(createNewPoll(pollType,amount))
+        }
+                
     }
 
-    const updateContractor = (e)=>{
-        e.preventDefault()
-        dispatch(updateRelContractAddress())
-    }
     return (
         <div>
             <div className="depositForm panel panel-default">
@@ -57,16 +52,10 @@ function CreateNewPoll (){
                     </div>
                     <div className="input-group form-group">
                         <span className="input-group-addon">Poll Type</span>
-                        <SelectComponent on listItem={pollTypes} setValue={setPollType}/>
+                        <SelectComponent listItem={pollTypes} setValue={setPollType}/>
                     </div>
                     <div className="button-group form-group">
                         <button className="btn btn-green" onClick={createPoll} disabled={locked} >Create Poll</button>
-                    </div>
-                    <div className="button-group form-group">
-                        <button className="btn btn-green" onClick={basicContract} disabled={locked} >Create Basic Contractor</button>
-                    </div>
-                    <div className="button-group form-group">
-                        <button className="btn btn-green" onClick={updateContractor} disabled={locked} >Update Contractor</button>
                     </div>
                 </form>
             </div>

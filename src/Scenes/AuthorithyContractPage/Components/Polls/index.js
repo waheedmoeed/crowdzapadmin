@@ -9,6 +9,7 @@ import Loader from "react-loader-spinner";
 
 
 function Polls(){
+    const locked = useSelector((state)=> state.wallet.walletLocked)
     const tried = useSelector(state => state.authorityContract.tried)
     const loading  = useSelector(state => state.authorityContract.loadingPolls)
     const polls  = useSelector(state => state.authorityContract.polls)
@@ -27,6 +28,9 @@ function Polls(){
                 :
                 ""
             }
+            {
+                <Alert class="danger" show={locked} message="Wallet must be unlocked, before any operation!!" clearButton={true}/>
+            }
             {(!pollsError)?
                 (polls.length === 0)?
                     <h5>There are no polls yet</h5>
@@ -34,7 +38,7 @@ function Polls(){
                     polls.map((item, index) => {
                         return (
                             <li key={index}>
-                                <PollInfo avatar={item.avatar} name={item.name} title={item.title} address={item.address} />
+                                <PollInfo data={item} />
                             </li>
                         );
                     })

@@ -7,7 +7,9 @@ import {faFileImage} from "@fortawesome/free-solid-svg-icons";
 import SelectComponent from "Components/SelectComponent";
 import MapLocation from "./Components/MapLocation";
 import {createBasicContract} from "Services_chain/Contracts";
-import Alert from "../../Components/Common/Alert";
+import Alert from "Components/Common/Alert";
+import {addNewListedProp} from "Services/ListProperty"
+
 
 const nodes = [
     'ABDUL NODE',
@@ -15,7 +17,10 @@ const nodes = [
     'NADEEM NODE'
 ];
 
+
+
 function CreateTokenizedAsset(){
+    const fileArray = [];
     const [contractType, setContractType] = useState("basic")
     const [title, setTitle] = useState("")
     const [totalSupply, setTotalSupply] = useState(0)
@@ -32,29 +37,30 @@ function CreateTokenizedAsset(){
 
     const handleContractCreation = async ()=>{
         let data ={
-            title: "ISLAMABAD CENTER",
-            description: "Biggest Mall in Islamabad",
+            title: title,
+            description: description,
             location:{
-                city: "Islamabad",
-                country: "Pakistan"
+                city: city,
+                country: country
             },
             geolocation:{
                 lat: 89.00,
                 long: 74.09
             },
-            contractType:"Basic",
-            endDate: new Date(endDate).toISOString(),
+            contractType:contractType,
+            endDate: new Date().toISOString(),
             startDate: new Date().toISOString(),
             contractAddress:"",
             officialDocs : "",
             nodeName: "Abdul Waheed",
-            galleryImages : [],
+            galleryImages : images,
             nodeId : "",
-            tokenPrice: "20",
-            totalSupply: "1000"
+            tokenPrice: tokenPrice,
+            totalSupply: totalSupply
         }
-        console.log()
-        //await createBasicContract(data, setRequestStatus)
+
+        //
+        addNewListedProp(data)
     }
 
     return(
@@ -160,7 +166,7 @@ function CreateTokenizedAsset(){
                                                         multiple
                                                         style={{display:'none'}}
                                                         type="file"
-                                                        onChange={e => setImages(e.target.value)}
+                                                        onChange={e => setImages(e.target.files)}
                                                     />
                                                     <label htmlFor="contained-address-file">
                                                         <Fab component="span" className="buttonDoc">

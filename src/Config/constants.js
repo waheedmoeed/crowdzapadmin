@@ -13,6 +13,7 @@ const CONSTANTS = {
         LOGIN : "/api/user/login",
         POST_KYC: '/api/user/kyc',
         GET_LISTED_PROPS: 'api/property/get_listed_props',
+        ADD_NEW_LISTED_PROPS: 'api/property/create_listed_prop',        
         GET_ADDRESSES : 'api/user/get_keys',
         ADD_NEW_ADDRESSES : 'api/user/add_key',
         PLACE_CRYPTO_ORDER :'api/crypto/order_crypto',
@@ -25,7 +26,7 @@ const CONSTANTS = {
     },
     CHAIN_API_URLS:{
         GET_ACCOUNT_DATA: 'auth/accounts/',
-        GET_POLLS : 'relcontractors/polls/',
+        GET_POLLS : 'relcontractors/polls',
         GET_POLL_BY_ID : 'relcontractors/poll_by_id/'
     },
     AUTH :{
