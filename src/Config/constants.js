@@ -27,7 +27,8 @@ const CONSTANTS = {
     CHAIN_API_URLS:{
         GET_ACCOUNT_DATA: 'auth/accounts/',
         GET_POLLS : 'relcontractors/polls',
-        GET_POLL_BY_ID : 'relcontractors/poll_by_id/'
+        GET_POLL_BY_ID : 'relcontractors/poll_by_id/',
+        GET_BASIC_CONTRACT_BY_ID : 'smartcontracts/get_basic_contract/'
     },
     AUTH :{
         SET_CURRENT_USER : "SET_CURRENT_USER",

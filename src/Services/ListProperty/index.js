@@ -43,7 +43,7 @@ export const getQueryListedProps = (cityName, cb) => (dispatch) => {
     });
 };
 
-
+//TODO replace values with actual values from UI
 export const  addNewListedProp = async (data)=>{
     let contractWallet = await Secp256k1HdWallet.generate()
     const [{ address }] = await contractWallet.getAccounts();
@@ -71,7 +71,6 @@ export const  addNewListedProp = async (data)=>{
     }
 
     await createBasicContractInChain(newListedPropData)
-    /*
     Promise.all(uploadGalleryImages(data.galleryImages)).then((res) => {
         let urls = []
 
@@ -84,8 +83,21 @@ export const  addNewListedProp = async (data)=>{
         listedPropService.addNewListedProps(newListedPropData)
     }).catch((err)=>{
         console.log(err);
-    })  
-    */  
+    })    
+}
+
+export const getContracDetailFromChain = (contractId, cb)=>{
+    listedPropService.getContracDetailFromChain(contractId)
+    .then(res => {
+        if (res.status === 200 && res.data.result) {
+            cb("", res.data.result)
+        }else{
+            cb("Failed to get contract from chain")
+        }
+    }).catch(err => {
+        console.log(err)
+        cb("Failed to get contract from chain")
+    });
 }
 
 const uploadGalleryImages = (images)=>{

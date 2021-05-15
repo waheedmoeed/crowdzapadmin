@@ -17,9 +17,10 @@ export const createBasicContract = async (data, callback) => {
 
 export const buyBasicTokens =  (data, callBack) => {
     buyBasicTokensInChain(data).then((res)=>{
-        if(res.transactionHash){
+        if(res.transactionHash){            
             newInvestment(res.transactionHash, data, callBack)
         }else{
+            console.log(res)
             callBack("PROCESSING_FAILED", "")
         }
     }).catch((err)=>{
@@ -58,13 +59,14 @@ export const buyBasicTokensInChain =  (data) => {
     let client  = Wallet.getInstance().account
     let msgTran =[
         {
-            "type": "smartcontracts/buy_basic_tokens",
+            "type": "smartcontracts/invest_basic_contract",
             "value": {
-                "contract_address": "cosmos144guy8hgaslrwt4hmgz66nw5ger0wgzu0avld9",
-                "tokens": data.amount.toString(),
+                "contract_address": data.contractAddress.toString(),
+                "amount": data.amount.toString(),
                 "investor": client.address.toString()
             }
         }]
+    console.log(msgTran)    
     let fee=  {
         "amount": [],
         "gas": "200000"

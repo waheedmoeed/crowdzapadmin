@@ -10,6 +10,7 @@ import {createBasicContract} from "Services_chain/Contracts";
 
 function CreateNewPoll (){
     const processingCreatePoll = useSelector((state)=> state.authorityContract.processingCreatePoll)
+    const createPollTransactionHash = useSelector((state)=> state.authorityContract.msg)
     const createPollError = useSelector((state)=> state.authorityContract.createPollError)
     const walletObj = useSelector((state)=> state.wallet.walletObj)
     const locked = useSelector((state)=> state.wallet.walletLocked)
@@ -46,6 +47,7 @@ function CreateNewPoll (){
                 <form>
                     <Alert class="danger" show={locked} message="Wallet must be unlocked, before any operation!!" clearButton={true}/>
                     <Alert class="danger" show={(createPollError)?true: false} message="Failed to create new poll" clearButton={true}/>
+                    <Alert class="success" show={(createPollTransactionHash != "" && createPollTransactionHash)?true: false} message={createPollTransactionHash} clearButton={true}/>
                     <div className="input-group form-group">
                         <span className="input-group-addon">Amount</span>
                         <input type="number" onChange={(e)=>setAmount(e.target.value)} className="form-control" placeholder="Amount" />

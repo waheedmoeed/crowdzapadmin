@@ -183,7 +183,7 @@ export default function(state = initialState, action) {
         case ACTION_TYPE.CREATE_POLL_ERROR:
             return {
                 ...state,
-                msg:action.payload,
+                msg:"",
                 processingCreatePoll: false,
                 createPollError : action.payload,
             };

@@ -42,7 +42,7 @@ class SearchForm extends React.Component {
           {this.props.listedProps.map((data, index) => {
             return (
               <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6" key={index}>
-                <SingleHouse data={data} />
+                <SingleHouse data={data} admin={false}/>
               </div>
             );
           })}
@@ -65,7 +65,7 @@ class SearchForm extends React.Component {
           {this.state.searchData.map((data, index) => {
             return (
               <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6" key={index}>
-                <SingleHouse data={data} />
+                <SingleHouse data={data} admin={false}/>
               </div>
             );
           })}

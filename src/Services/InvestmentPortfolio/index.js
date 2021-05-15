@@ -5,9 +5,10 @@ const investmentPortfolioService = new InvestmentPortfolioService()
 // Register UserService - return ok response on success
 export const newInvestment = (txHash ,data, callBack) => {
     let investObj ={
-        contractAddress: 'cosmos144guy8hgaslrwt4hmgz66nw5ger0wgzu0avld9',
-        tokens: data.amount,
-        transactionHash : txHash
+        contractAddress: data.contractAddress,
+        amount: data.amount,
+        transactionHash : txHash,
+        contractType: data.contractType
     }
     investmentPortfolioService.addNewInvestment(investObj).then((res)=>{
         if(res.status === 200){
