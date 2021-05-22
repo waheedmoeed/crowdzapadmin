@@ -69,7 +69,7 @@ function CreateTokenizedAsset(){
                 <div className="walletWrapper">
                     <>
                         <div className="dashboardTitle">
-                            <h2>CREATE TOKENIZING CONTRACT</h2>
+                            <h3>CREATE TOKENIZING CONTRACT</h3>
                         </div>
                         <div style={{marginLeft:'2%'}}>
                             <Alert

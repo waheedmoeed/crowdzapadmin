@@ -16,6 +16,7 @@ import LocalStore from "Config/localStore";
 import {setCurrentUser} from "Redux/User";
 import {logoutUser} from "Services/User";
 import PrivateRoute from "./PrivateRoute";
+import InvestmentsManagment from 'Scenes/Investments';
 
 
 const localStore = new LocalStore();
@@ -44,6 +45,7 @@ function App(){
                 <Switch>
                 <Route exact={true} path="/" component={HomePage} />
                 <PrivateRoute exact={true} path="/search/:action?" component={SearchPage} />
+                <PrivateRoute exact={true} path="/investments_managment" component={InvestmentsManagment} />
                 <PrivateRoute exact={true} path="/wallet/:action?" component={WalletPage} />
                 <PrivateRoute exact={true} path="/property/:id?" component={MyHousePage} />
                 <PrivateRoute exact={true} path="/new_property" component={CreateTokenizedAsset} />

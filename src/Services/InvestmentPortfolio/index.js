@@ -2,7 +2,6 @@ import {InvestmentPortfolioService} from "./InvestmentPortfolioService";
 
 const investmentPortfolioService = new InvestmentPortfolioService()
 
-// Register UserService - return ok response on success
 export const newInvestment = (txHash ,data, callBack) => {
     let investObj ={
         contractAddress: data.contractAddress,
@@ -17,4 +16,17 @@ export const newInvestment = (txHash ,data, callBack) => {
             callBack("PROCESSING_FAILED", txHash)
         }
     })
+};
+
+export const getUserInvestments = ( callBack) => {
+    investmentPortfolioService.getUserInvestments().then(res => {
+        if (res.status === 200 && res.data) {
+            callBack("", res.data.data)
+        }else{
+            callBack("Failed to get investments")
+        }
+    }).catch(err => {
+        console.log(err)
+        callBack("Failed to get investments")
+    });
 };

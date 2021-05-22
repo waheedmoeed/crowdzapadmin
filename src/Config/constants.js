@@ -20,6 +20,7 @@ const CONSTANTS = {
         PROCESS_CRYPTO_ORDER :'api/crypto/order_processed',
         GET_CRYPTO_ORDERS : "/api/crypto/get_crypto_orders",
         ADD_NEW_INVESTMENT :"/api/investment/add_new_investment",
+        GET_NEW_INVESTMENT :"/api/investment/all_investments",
         ADMIN:{
             PROCESS_CRYPTO_ORDERS : "./api/crypto/process_crypto_orders"
         }

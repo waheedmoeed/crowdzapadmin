@@ -164,9 +164,7 @@ function HDWallet (){
                         :
                         <NewWallet/>
                     :
-                    <Loader
-                        type="Grid" color="#00A9A4" height={60} width={60} visible={loading}
-                    />
+                    <Loader type="Grid" color="#00A9A4" height={60} width={60} visible={loading}/>
             }
         </div>
     )
