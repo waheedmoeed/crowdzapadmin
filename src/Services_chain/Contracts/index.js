@@ -1,6 +1,6 @@
 import {Wallet} from "Services/Wallet";
 import {Secp256k1HdWallet} from "@cosmjs/launchpad";
-import {newInvestment} from "../../Services/InvestmentPortfolio";
+import {newInvestment, transferInvestment} from "Services/InvestmentPortfolio";
 
 export const createBasicContract = async (data, callback) => {
     try{
@@ -19,6 +19,22 @@ export const buyBasicTokens =  (data, callBack) => {
     buyBasicTokensInChain(data).then((res)=>{
         if(res.transactionHash){            
             newInvestment(res.transactionHash, data, callBack)
+        }else{
+            console.log(res)
+            callBack("PROCESSING_FAILED", "")
+        }
+    }).catch((err)=>{
+        callBack("PROCESSING_FAILED","")
+        console.log(err)
+    })
+}
+
+
+export const transferBasicTokens =  (data, callBack) => {
+    transferBasicTokensInChain(data).then((res)=>{
+        if(res.transactionHash){    
+            console.log(res)        
+            transferInvestment(res.transactionHash, data, callBack)
         }else{
             console.log(res)
             callBack("PROCESSING_FAILED", "")
@@ -61,9 +77,31 @@ export const buyBasicTokensInChain =  (data) => {
         {
             "type": "smartcontracts/invest_basic_contract",
             "value": {
-                "contract_address": data.contractAddress.toString(),
+                "contract_address": data.contractAddress,
                 "amount": data.amount.toString(),
                 "investor": client.address.toString()
+            }
+        }]
+    console.log(msgTran)    
+    let fee=  {
+        "amount": [],
+        "gas": "200000"
+    }
+
+   return client.signerCosmosClient.signAndBroadcast(msgTran,fee)
+}
+
+
+export const transferBasicTokensInChain =  (data) => {
+    let client  = Wallet.getInstance().account
+    let msgTran =[
+        {
+            "type": "smartcontracts/transfer_basic_contract",
+            "value": {
+                "contract_address": data.contractAddress.toString(),
+                "to": data.to.toString(),
+                "from": client.address.toString(),
+                "amount":data.amount.toString()
             }
         }]
     console.log(msgTran)    

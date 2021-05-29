@@ -17,6 +17,7 @@ import {setCurrentUser} from "Redux/User";
 import {logoutUser} from "Services/User";
 import PrivateRoute from "./PrivateRoute";
 import InvestmentsManagment from 'Scenes/Investments';
+import AdminKYCPage from "Scenes/AdminKYC"
 
 
 const localStore = new LocalStore();
@@ -51,6 +52,7 @@ function App(){
                 <PrivateRoute exact={true} path="/new_property" component={CreateTokenizedAsset} />
                 <PrivateRoute exact={true} path="/authorityContract" component={AuthorityContract} />
                 <PrivateRoute exact={true} path="/profiling/:action?" component={Profiling} />
+                <PrivateRoute exact={true} path="/admin_kyc_request" component={AdminKYCPage} />
                 </Switch>
             </div>
         </Router>

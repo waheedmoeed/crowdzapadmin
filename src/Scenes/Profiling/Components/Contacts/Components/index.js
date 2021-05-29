@@ -14,11 +14,9 @@ export default function Contact (props){
             <FontAwesomeIcon icon={faCoins} size={"2x"}  color="#0eaaa6"/>  
         </div>
         <div className="info">
-          <div className="name">Invested Amount {props.data.name}</div>
-          <div className="title">Contract Address {props.data.address}</div>
-        </div>
-        <div className="ops">
-            <FontAwesomeIcon icon={faCaretDown} size={"2x"}  color="#0eaaa6"/>  
+          <div className="name">Name {props.data.name}</div>
+          <div className="title">Email {props.data.email}</div>
+          <div className="title">Address {props.data.address}</div>
         </div>
       </div>
     );

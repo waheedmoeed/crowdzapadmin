@@ -37,6 +37,7 @@ class SelectComponent extends React.Component {
     this.setState({
       itemSelected: index
     });
+    this.props.setValue(index)
     this.showToggle();
   }
 

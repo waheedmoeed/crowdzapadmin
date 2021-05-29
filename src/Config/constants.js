@@ -12,15 +12,25 @@ const CONSTANTS = {
         REGISTER_USER: "/api/user/register",
         LOGIN : "/api/user/login",
         POST_KYC: '/api/user/kyc',
-        GET_LISTED_PROPS: 'api/property/get_listed_props',
-        ADD_NEW_LISTED_PROPS: 'api/property/create_listed_prop',        
+        PROCESS_KYC: '/api/user/process_kyc_request',
+        GET_ALL_KYC_REQUEST: '/api/user/get_kyc_requests',
         GET_ADDRESSES : 'api/user/get_keys',
         ADD_NEW_ADDRESSES : 'api/user/add_key',
+        GET_USER_Contacts :"/api/user/get_contacts",
+        ADD_USER_CONTACT :"/api/user/add_contact",
+
+        GET_LISTED_PROPS: 'api/property/get_listed_props',
+        ADD_NEW_LISTED_PROPS: 'api/property/create_listed_prop',        
+     
+
         PLACE_CRYPTO_ORDER :'api/crypto/order_crypto',
         PROCESS_CRYPTO_ORDER :'api/crypto/order_processed',
         GET_CRYPTO_ORDERS : "/api/crypto/get_crypto_orders",
+
         ADD_NEW_INVESTMENT :"/api/investment/add_new_investment",
+        TRANSFER_INVESTMENT :"/api/investment/transfer_investment",
         GET_NEW_INVESTMENT :"/api/investment/all_investments",
+        
         ADMIN:{
             PROCESS_CRYPTO_ORDERS : "./api/crypto/process_crypto_orders"
         }
