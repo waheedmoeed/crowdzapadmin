@@ -30,6 +30,8 @@ const CONSTANTS = {
         ADD_NEW_INVESTMENT :"/api/investment/add_new_investment",
         TRANSFER_INVESTMENT :"/api/investment/transfer_investment",
         GET_NEW_INVESTMENT :"/api/investment/all_investments",
+
+        GET_STRIPE_TOKEN : "/api/user/create-checkout-session",
         
         ADMIN:{
             PROCESS_CRYPTO_ORDERS : "./api/crypto/process_crypto_orders"

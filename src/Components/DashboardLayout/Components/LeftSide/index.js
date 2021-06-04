@@ -34,12 +34,12 @@ class LeftSide extends React.Component {
             </li>
             <li>
                 <Link to="/admin_kyc_request">
-                <Icon className="navIcon" name="comments" />
+                <Icon className="navIcon" name="key" />
                 <span className="navLabel">KYC Requests</span>
                 </Link>
             </li>
             <li>
-                <Link to="/advice/buying">
+                <Link to="/contactus">
                 <Icon className="navIcon" name="comments" />
                 <span className="navLabel">Contact Us</span>
                 </Link>

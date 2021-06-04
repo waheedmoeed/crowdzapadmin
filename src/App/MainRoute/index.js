@@ -18,6 +18,7 @@ import {logoutUser} from "Services/User";
 import PrivateRoute from "./PrivateRoute";
 import InvestmentsManagment from 'Scenes/Investments';
 import AdminKYCPage from "Scenes/AdminKYC"
+//import ContactUs from "Scenes/Complain"
 
 
 const localStore = new LocalStore();
@@ -53,10 +54,11 @@ function App(){
                 <PrivateRoute exact={true} path="/authorityContract" component={AuthorityContract} />
                 <PrivateRoute exact={true} path="/profiling/:action?" component={Profiling} />
                 <PrivateRoute exact={true} path="/admin_kyc_request" component={AdminKYCPage} />
+                
                 </Switch>
             </div>
         </Router>
     );
 }
-
+//<PrivateRoute exact={true} path="/contactus" component={ContactUs} />
 export default App;

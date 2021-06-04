@@ -3,20 +3,18 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css"
 
 class Gallery extends Component{
-    images = [
-        {
-            original: this.props.data.galleryImages[0],
-            thumbnail: 'https://picsum.photos/id/1018/250/150/',
-        },
-        {
-            original: this.props.data.galleryImages[0],
-            thumbnail: 'https://picsum.photos/id/1015/250/150/',
-        },
-        {
-            original: this.props.data.galleryImages[0],
-            thumbnail: 'https://picsum.photos/id/1019/250/150/',
-        },
-    ];
+    getImages(){
+        let images = []
+        this.props.data.galleryImages.forEach(element => {
+            let image ={
+                original: element,
+                thumbnail: element,
+            }
+            images.push(image)
+        });
+        return images
+    }
+
     render(){
         return(
             <div
@@ -26,7 +24,7 @@ class Gallery extends Component{
                 aria-labelledby={`simple-tab-0`}
                 style={{paddingTop:"1%"}}
             >
-                <ImageGallery items={this.images} autoPlay={true} showPlayButton={false} />
+                <ImageGallery items={this.getImages()} autoPlay={true} showPlayButton={false} />
             </div>
         )
     }

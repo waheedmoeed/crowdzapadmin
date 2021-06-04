@@ -5,7 +5,7 @@ import Fab from "@material-ui/core/Fab";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFileImage} from "@fortawesome/free-solid-svg-icons";
 import SelectComponent from "Components/SelectComponent";
-import MapLocation from "./Components/MapLocation";
+import InputMap from "Components/InputMap"
 import {createBasicContract} from "Services_chain/Contracts";
 import Alert from "Components/Common/Alert";
 import {addNewListedProp} from "Services/ListProperty"
@@ -44,8 +44,8 @@ function CreateTokenizedAsset(){
                 country: country
             },
             geolocation:{
-                lat: 89.00,
-                long: 74.09
+                lat: 33.705142,
+                long: 72.978906
             },
             contractType:contractType,
             endDate: new Date().toISOString(),
@@ -144,9 +144,7 @@ function CreateTokenizedAsset(){
                                                     </div>
                                                 </Grid>
                                             </Grid>
-                                            <Grid container spacing={1} direction={"row"}>
-                                                <MapLocation/>
-                                            </Grid>
+                                            
                                         </div>
 
                                     </div>
@@ -173,15 +171,21 @@ function CreateTokenizedAsset(){
                                                             <FontAwesomeIcon icon={faFileImage} size="lg"  color="#0EAAA6" />
                                                         </Fab>
                                                     </label>
-                                                </div>
+                                                </div>                        
+                                            </Grid>
+                                            <Grid item xs={8} sm={10} md={10}>
+                                                <InputMap/>
+                                            </Grid>  
+                                            <Grid item xs={8} sm={10} md={10}>
                                                 <div className="submit">
                                                     <Button
                                                         className="submit_btn"
                                                         style={{fontSize:14}}
                                                         onClick={handleContractCreation}
                                                     >Create Contract</Button>
-                                                </div>
-                                            </Grid>
+                                                </div>   
+                                            </Grid> 
+                                                                   
                                         </Grid>
                                     </div>
                                 </Grid>

@@ -48,15 +48,15 @@ export const  addNewListedProp = async (data)=>{
     let contractWallet = await Secp256k1HdWallet.generate()
     const [{ address }] = await contractWallet.getAccounts();
     let newListedPropData ={
-        title: "ISLAMABAD CENTER",
-        detail: "Biggest Mall in Islamabad",
+        title: data.title.toString(),
+        detail: data.description.toString(),
         location:{
-            city: "Islamabad",
-            country: "Pakistan"
+            city: data.location.city,
+            country: data.location.country
         },
         geoLocation:{
-            lat: 89.00,
-            long: 74.09
+            lat: data.geolocation.lat,
+            long: data.geolocation.long
         },
         contractType:"Basic",
         endDate: new Date().toISOString(),
@@ -66,11 +66,12 @@ export const  addNewListedProp = async (data)=>{
         mainImg:"",
         galleryImages : [],
         nodeId : "abdul",
-        tokenPrice: "20",
-        totalSupply: "1000"
+        tokenPrice: data.tokenPrice.toString(),
+        totalSupply: data.totalSupply.toString()
     }
 
-    await createBasicContractInChain(newListedPropData)
+    let res = await createBasicContractInChain(newListedPropData)
+    console.log(res)
     Promise.all(uploadGalleryImages(data.galleryImages)).then((res) => {
         let urls = []
 
